@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://nqrsil8omptw"]
+
+[ext_resource type="Script" uid="uid://7bp5adfi46y7" path="res://main.gd" id="1_ig7tw"]
+
+[node name="main" type="Node2D" unique_id=1887750624]
+script = ExtResource("1_ig7tw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1727664209]
+
+[node name="Label" type="Label" parent="." unique_id=2070092026]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1204638179]
+offset_right = 4.0
+offset_bottom = 27.0
