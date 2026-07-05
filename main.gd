@@ -23,7 +23,10 @@ var timerbmin = 1.5
 var food  := Vector2i(-1,-1)
 var score : = 0
 
-var mov_interwel =.12
+var mov_interwelbase =.12
+var mov_interwelmin=0.12
+var sppedinc = 0.003
+var mov_interwel = mov_interwelbase
 var snake :Array = []
 var direc := Vector2i(1,0)
 var nextdirec := Vector2i(1,0)
@@ -44,7 +47,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if gameover :
 		if Input.is_action_just_pressed("ui_accept"):
-			get_tree().reload_current_scene()
+			get_tree().change_scene_to_file("res://mainmenu.tscn")
 			
 		return
 	movement()
@@ -154,3 +157,4 @@ func snakeshrink(candie:bool = true) -> void:
 func difficultyupdate() -> void:
 	timerAmax = max(timerAmax_base-(score*difficultyinc),timerAmax_min)
 	progress_bar.max_value = timerAmax
+	mov_interwel=max(mov_interwelbase - (score*sppedinc),mov_interwelmin)

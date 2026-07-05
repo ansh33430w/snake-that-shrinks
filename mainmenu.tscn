@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cpb7nadskwtld"]
+
+[ext_resource type="Script" uid="uid://3qlm6fwetyca" path="res://mainmenu.gd" id="1_cmhrf"]
+
+[sub_resource type="SystemFont" id="SystemFont_d2nv2"]
+font_names = PackedStringArray("Noto Sans Elymaic", "MathJax_Fraktur", "")
+
+[node name="mainmenu" type="Control" unique_id=2049605291]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cmhrf")
+
+[node name="start" type="Button" parent="." unique_id=966207174]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 118.0
+offset_right = 387.0
+offset_bottom = 149.0
+text = "PRESS TO START "
+
+[node name="OPTIONS" type="Button" parent="." unique_id=2102983764]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 223.0
+offset_right = 358.0
+offset_bottom = 254.0
+theme_override_fonts/font = SubResource("SystemFont_d2nv2")
+text = "OPTIONS"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="OPTIONS" to="." method="_on_options_pressed"]
