@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var label: Label = $Label
 
 
 const gridsize = 20
@@ -68,7 +69,10 @@ func step() -> void:
 	
 	if newhead == food:
 		score = score +1
+		label.text ="score : %d" % score
+		
 		foodspawn()
+		
 	else:
 		
 		snake.pop_back()
