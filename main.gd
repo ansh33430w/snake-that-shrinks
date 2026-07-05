@@ -1,9 +1,11 @@
 extends Node2D
 
 @onready var label: Label = $Label
-@onready var progress_bar: ProgressBar = $ProgressBar
+
+@onready var progress_bar: ProgressBar = $"timer A"
 
 @onready var gameoverlabel: Label = $gameover
+@onready var timer_b: ProgressBar = $"timer B"
 
 
 const gridsize = 20
@@ -13,8 +15,7 @@ const g_width = 30
 
 var timerAmax = 5.0
 var timerA = 0
-
-
+var timerbmin = 2.0
 var food  := Vector2i(-1,-1)
 var score : = 0
 
@@ -30,6 +31,9 @@ func _ready() -> void:
 	snake =[Vector2i(10,10), Vector2i(9,10) , Vector2i(8,10)]
 	progress_bar.max_value = timerAmax
 	progress_bar.min_value = 0
+	timer_b.max_value = timerbmin
+	timer_b.min_value = 0
+	
 	gameoverlabel.text = ""
 	foodspawn()
 
@@ -49,6 +53,7 @@ func _process(delta: float) -> void:
 		step()
 	timerA += delta
 	progress_bar.value = timerAmax -timerA
+	timer_b.value = min(timerA,timerbmin)
 	if timerA>= timerAmax:
 		snakeshrink()
 		timerA = 0 
@@ -92,8 +97,12 @@ func step() -> void:
 	snake.insert(0,newhead)
 	
 	if newhead == food:
-		score = score +1
-		label.text ="score : %d" % score
+		if timerA <timerbmin:
+			snakeshrink()
+			label.text = "too fast"
+		else:
+			score = score +1
+			label.text ="score : %d" % score
 		
 		foodspawn()
 		timerA = 0

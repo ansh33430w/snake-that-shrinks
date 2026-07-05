@@ -19,11 +19,17 @@ offset_top = 16.0
 offset_right = 65.0
 offset_bottom = 39.0
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1204638179]
+[node name="timer A" type="ProgressBar" parent="." unique_id=1204638179]
 offset_left = 140.0
 offset_top = 14.0
 offset_right = 224.0
 offset_bottom = 41.0
+
+[node name="timer B" type="ProgressBar" parent="." unique_id=1423411927]
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 328.0
+offset_bottom = 42.0
 
 [node name="gameover" type="Label" parent="." unique_id=579400659]
 offset_left = 212.0
