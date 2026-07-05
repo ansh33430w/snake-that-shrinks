@@ -6,7 +6,9 @@ extends Node2D
 
 @onready var gameoverlabel: Label = $gameover
 @onready var timer_b: ProgressBar = $"timer B"
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+@onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
 
 const gridsize = 20
 const g_hieght = 30
@@ -95,10 +97,14 @@ func step() -> void:
 		
 		gameover=true
 		gameoverlabel.text = "GAME OVER!!!!     Score%d\nPress Enter to Restart " %score
+		audio_stream_player_2.play()
+		Sound.stopbgmusic()
 		return
 	if newhead in snake :
 		gameover=true
 		gameoverlabel.text = "GAME OVER!!!!     Score%d\nPress Enter to Restart " %score
+		audio_stream_player_2.play()
+		Sound.stopbgmusic()
 		return
 		
 	snake.insert(0,newhead)
@@ -111,6 +117,7 @@ func step() -> void:
 			score = score +1
 			label.text ="score : %d" % score
 			difficultyupdate()
+			audio_stream_player.play()
 		foodspawn()
 		timerA = 0
 	else:
@@ -127,7 +134,7 @@ func _draw() -> void:
 	draw_rect(Rect2(food.x*gridsize , food.y*gridsize ,gridsize-1 ,gridsize-1),Color(1.17, 0.329, 0.731, 1.0))
 	for i in snake.size():
 		var seg = snake[i]
-		var color = Settings.snakebody_color if i ==0 else Settings.snakebody_color
+		var color = Settings.snakehead_color  if i ==0 else Settings.snakebody_color
 		draw_rect(Rect2(seg.x*  gridsize , seg.y * gridsize ,gridsize-1,gridsize-1),color)
 		
 		
@@ -161,3 +168,5 @@ func difficultyupdate() -> void:
 	timerAmax = max(timerAmax_base-(score*difficultyinc),timerAmax_min)
 	progress_bar.max_value = timerAmax
 	mov_interwel=max(mov_interwelbase - (score*sppedinc),mov_interwelmin)
+	
+	

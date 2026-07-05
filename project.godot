@@ -11,11 +11,13 @@ config_version=5
 [application]
 
 config/name="snake that shrinks"
+run/main_scene="uid://cpb7nadskwtld"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+Sound="*uid://cubroy721y35k"
 Settings="*uid://1vnw65m6dios"
 
 [display]

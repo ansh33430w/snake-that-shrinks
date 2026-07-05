@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://7bp5adfi46y7" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dulkeivbrqb3o" path="res://hg.jpeg" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://b31xm3bb8d7sd" path="res://eat1.ogg" id="3_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://b6gorrx8pup4i" path="res://universfield-game-over-deep-male-voice-clip-352695.mp3" id="4_lquwl"]
 
 [sub_resource type="FontVariation" id="FontVariation_ig7tw"]
 
@@ -21,27 +23,36 @@ position = Vector2(300, 296)
 offset = Vector2(0.005, 4.005)
 
 [node name="Label" type="Label" parent="." unique_id=2070092026]
-offset_left = 25.0
-offset_top = 16.0
-offset_right = 65.0
-offset_bottom = 39.0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="timer A" type="ProgressBar" parent="." unique_id=1204638179]
 offset_left = 140.0
 offset_top = 14.0
 offset_right = 224.0
 offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.10980393, 0.07150614, 0.08638542, 1)
 
 [node name="timer B" type="ProgressBar" parent="." unique_id=1423411927]
 offset_left = 244.0
 offset_top = 15.0
 offset_right = 328.0
 offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.07, 0.07, 0.07, 1)
 
 [node name="gameover" type="Label" parent="." unique_id=579400659]
-offset_left = 212.0
-offset_top = 249.0
-offset_right = 451.0
-offset_bottom = 345.0
+offset_left = 142.0
+offset_top = 229.0
+offset_right = 381.0
+offset_bottom = 325.0
 theme_override_fonts/font = SubResource("FontVariation_ig7tw")
 theme_override_styles/focus = SubResource("StyleBoxTexture_0xm2m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=914931238]
+stream = ExtResource("3_1bvp3")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=785747262]
+stream = ExtResource("4_lquwl")

@@ -8,7 +8,7 @@ extends Control
 func _ready() -> void:
 	start.pressed.connect(_on_start_pressed)
 	options.pressed.connect(_on_options_pressed)
-	
+	Sound.playmsuic()
 	
 	
 func _process(delta: float) -> void:
