@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://7bp5adfi46y7" path="res://main.gd" id="1_ig7tw"]
 
+[sub_resource type="FontVariation" id="FontVariation_ig7tw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xm2m"]
+
 [node name="main" type="Node2D" unique_id=1887750624]
 script = ExtResource("1_ig7tw")
 
@@ -20,3 +24,11 @@ offset_left = 140.0
 offset_top = 14.0
 offset_right = 224.0
 offset_bottom = 41.0
+
+[node name="gameover" type="Label" parent="." unique_id=579400659]
+offset_left = 212.0
+offset_top = 249.0
+offset_right = 451.0
+offset_bottom = 345.0
+theme_override_fonts/font = SubResource("FontVariation_ig7tw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0xm2m")

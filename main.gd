@@ -3,6 +3,8 @@ extends Node2D
 @onready var label: Label = $Label
 @onready var progress_bar: ProgressBar = $ProgressBar
 
+@onready var gameoverlabel: Label = $gameover
+
 
 const gridsize = 20
 const g_hieght = 30
@@ -28,11 +30,14 @@ func _ready() -> void:
 	snake =[Vector2i(10,10), Vector2i(9,10) , Vector2i(8,10)]
 	progress_bar.max_value = timerAmax
 	progress_bar.min_value = 0
-	
+	gameoverlabel.text = ""
 	foodspawn()
 
 func _process(delta: float) -> void:
 	if gameover :
+		if Input.is_action_just_pressed("ui_accept"):
+			get_tree().reload_current_scene()
+			
 		return
 	movement()
 	
@@ -43,7 +48,7 @@ func _process(delta: float) -> void:
 	
 		step()
 	timerA += delta
-	progress_bar.value = timerA
+	progress_bar.value = timerAmax -timerA
 	if timerA>= timerAmax:
 		snakeshrink()
 		timerA = 0 
@@ -77,9 +82,11 @@ func step() -> void:
 	if newhead.x < 0 or newhead.x >= g_width or newhead.y <0 or newhead.y >= g_hieght:
 		
 		gameover=true
+		gameoverlabel.text = "GAME OVER!!!!     Score%d\nPress Enter to Restart " %score
 		return
 	if newhead in snake :
 		gameover=true
+		gameoverlabel.text = "GAME OVER!!!!     Score%d\nPress Enter to Restart " %score
 		return
 		
 	snake.insert(0,newhead)
@@ -89,7 +96,7 @@ func step() -> void:
 		label.text ="score : %d" % score
 		
 		foodspawn()
-		
+		timerA = 0
 	else:
 		
 		snake.pop_back()
@@ -123,5 +130,6 @@ func snakeshrink() -> void:
 	if snake.size() > 0:
 		snake.pop_back()
 	if snake.size()== 0:
+		gameoverlabel.text = "GAME OVER\nScore%d\nPress Enter to Restart " %score
 		gameover = true
 		
