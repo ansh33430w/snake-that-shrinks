@@ -14,6 +14,10 @@ config/name="snake that shrinks"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Settings="*uid://1vnw65m6dios"
+
 [display]
 
 window/size/viewport_width=600

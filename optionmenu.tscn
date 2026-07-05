@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://brfph3hu5k811"]
+
+[ext_resource type="Script" uid="uid://6kx2ny5g5prc" path="res://optionmenu.gd" id="1_x1kbg"]
+[ext_resource type="Texture2D" uid="uid://pi26uvtgb7p6" path="res://Untitled.jpeg" id="2_25j06"]
+
+[node name="optionmenu" type="Control" unique_id=1812363916]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -11.0
+offset_right = -1.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1kbg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=480350871]
+layout_mode = 0
+offset_right = 593.0
+offset_bottom = 610.0
+texture = ExtResource("2_25j06")
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=1881484079]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 119.0
+offset_right = 330.0
+offset_bottom = 144.0
+
+[node name="vol" type="HSlider" parent="." unique_id=792583578]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 172.0
+offset_right = 382.0
+offset_bottom = 188.0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="." unique_id=1845901263]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 221.0
+offset_right = 370.0
+offset_bottom = 247.0
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="." unique_id=2142095222]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 275.0
+offset_right = 376.0
+offset_bottom = 297.0
+
+[node name="Button" type="Button" parent="." unique_id=1650969947]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 372.0
+offset_right = 344.0
+offset_bottom = 403.0
+text = "BACK"
+
+[node name="Label" type="Label" parent="." unique_id=367810910]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 118.0
+offset_right = 284.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0, 0.07, 0.030737203, 1)
+text = "MUTE :"
+
+[node name="Label2" type="Label" parent="." unique_id=651719988]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 222.0
+offset_right = 293.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(0.09, 0.09, 0.09, 1)
+text = "COLOR HEAD
+"
+
+[node name="Label4" type="Label" parent="." unique_id=185697403]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 276.0
+offset_right = 275.0
+offset_bottom = 299.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "COLOR BODY"
+
+[node name="Label3" type="Label" parent="." unique_id=101305296]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 166.0
+offset_right = 290.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "VOLUME :"
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="changed" from="vol" to="." method="_on_vol_changed"]
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="color_changed" from="ColorPickerButton2" to="." method="_on_color_picker_button_2_color_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
