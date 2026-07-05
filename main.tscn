@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://nqrsil8omptw"]
 
 [ext_resource type="Script" uid="uid://7bp5adfi46y7" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dulkeivbrqb3o" path="res://hg.jpeg" id="2_0xm2m"]
 
 [sub_resource type="FontVariation" id="FontVariation_ig7tw"]
 
@@ -8,6 +9,12 @@
 
 [node name="main" type="Node2D" unique_id=1887750624]
 script = ExtResource("1_ig7tw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1553045383]
+z_index = -5
+offset_right = 627.0
+offset_bottom = 602.0
+texture = ExtResource("2_0xm2m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1727664209]
 position = Vector2(300, 296)

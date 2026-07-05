@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpb7nadskwtld"]
 
 [ext_resource type="Script" uid="uid://3qlm6fwetyca" path="res://mainmenu.gd" id="1_cmhrf"]
+[ext_resource type="Texture2D" uid="uid://pi26uvtgb7p6" path="res://Untitled.jpeg" id="2_d2nv2"]
 
 [sub_resource type="SystemFont" id="SystemFont_d2nv2"]
 font_names = PackedStringArray("Noto Sans Elymaic", "MathJax_Fraktur", "")
@@ -9,6 +10,12 @@ font_names = PackedStringArray("Noto Sans Elymaic", "MathJax_Fraktur", "")
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cmhrf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=499539223]
+layout_mode = 0
+offset_right = 597.0
+offset_bottom = 602.0
+texture = ExtResource("2_d2nv2")
 
 [node name="start" type="Button" parent="." unique_id=966207174]
 layout_mode = 0

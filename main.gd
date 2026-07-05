@@ -120,8 +120,11 @@ func step() -> void:
 
 
 func _draw() -> void:
-	draw_rect(Rect2(0,0,g_width*gridsize,g_hieght*gridsize),Color(0.8,0.8,0.8),false,2.0)
-	draw_rect(Rect2(food.x*gridsize , food.y*gridsize ,gridsize-1 ,gridsize-1),Color(0.9,0.9,0.9))
+	var wallcol = Color(0.011, 0.021, 0.012, 1.0)
+	if timerA > timerAmax-1:
+		wallcol = Color(.9,.2,.2)
+	draw_rect(Rect2(0,0,g_width*gridsize,g_hieght*gridsize),wallcol,false,10)
+	draw_rect(Rect2(food.x*gridsize , food.y*gridsize ,gridsize-1 ,gridsize-1),Color(1.17, 0.329, 0.731, 1.0))
 	for i in snake.size():
 		var seg = snake[i]
 		var color = Color(0.2,0.9,0.3) if i ==0 else Color(0.1,0.6,0.2)
