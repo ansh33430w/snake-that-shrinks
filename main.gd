@@ -13,9 +13,13 @@ const g_hieght = 30
 const g_width = 30
 
 
-var timerAmax = 5.0
+
+var timerAmax_base = 5.0
+var timerAmax = timerAmax_base
+
 var timerA = 0
-var timerbmin = 2.0
+var difficultyinc = 0.1
+var timerbmin = 1.5
 var food  := Vector2i(-1,-1)
 var score : = 0
 
@@ -23,13 +27,13 @@ var mov_interwel =.12
 var snake :Array = []
 var direc := Vector2i(1,0)
 var nextdirec := Vector2i(1,0)
-
+var timerAmax_min = 0
 var gameover := false
 var mov_timer = 0.0
 
 func _ready() -> void:
 	snake =[Vector2i(10,10), Vector2i(9,10) , Vector2i(8,10)]
-	progress_bar.max_value = timerAmax
+	
 	progress_bar.min_value = 0
 	timer_b.max_value = timerbmin
 	timer_b.min_value = 0
@@ -98,12 +102,12 @@ func step() -> void:
 	
 	if newhead == food:
 		if timerA <timerbmin:
-			snakeshrink()
+			snakeshrink(false)
 			label.text = "too fast"
 		else:
 			score = score +1
 			label.text ="score : %d" % score
-		
+			difficultyupdate()
 		foodspawn()
 		timerA = 0
 	else:
@@ -135,10 +139,18 @@ func foodspawn() -> void:
 	
 	
 	
-func snakeshrink() -> void:
-	if snake.size() > 0:
-		snake.pop_back()
-	if snake.size()== 0:
-		gameoverlabel.text = "GAME OVER\nScore%d\nPress Enter to Restart " %score
-		gameover = true
-		
+func snakeshrink(candie:bool = true) -> void:
+	if candie:
+		if snake.size() > 0:
+			snake.pop_back()
+		if snake.size()== 0:
+			gameoverlabel.text = "GAME OVER\nScore%d\nPress Enter to Restart " %score
+			gameover = true
+	else:
+		if snake.size() > 1:
+			snake.pop_back()
+			
+			
+func difficultyupdate() -> void:
+	timerAmax = max(timerAmax_base-(score*difficultyinc),timerAmax_min)
+	progress_bar.max_value = timerAmax
