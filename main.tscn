@@ -6,6 +6,7 @@
 script = ExtResource("1_ig7tw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1727664209]
+position = Vector2(298, 301)
 
 [node name="Label" type="Label" parent="." unique_id=2070092026]
 offset_right = 40.0

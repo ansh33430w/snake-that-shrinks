@@ -54,6 +54,7 @@ func step() -> void:
 	direc = nextdirec
 	var newhead = snake[0]+ direc
 	if newhead.x < 0 or newhead.x >= g_width or newhead.y <0 or newhead.y >= g_hieght:
+		
 		gameover=true
 		return
 	if newhead in snake :
@@ -65,6 +66,7 @@ func step() -> void:
 
 
 func _draw() -> void:
+	draw_rect(Rect2(0,0,g_width*gridsize,g_hieght*gridsize),Color(0.8,0.8,0.8),false,2.0)
 	for i in snake.size():
 		var seg = snake[i]
 		var color = Color(0.2,0.9,0.3) if i ==0 else Color(0.1,0.6,0.2)
