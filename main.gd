@@ -1,11 +1,16 @@
 extends Node2D
 
 @onready var label: Label = $Label
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 
 const gridsize = 20
 const g_hieght = 30
 const g_width = 30
+
+
+var timerAmax = 5.0
+var timerA = 0
 
 
 var food  := Vector2i(-1,-1)
@@ -21,16 +26,28 @@ var mov_timer = 0.0
 
 func _ready() -> void:
 	snake =[Vector2i(10,10), Vector2i(9,10) , Vector2i(8,10)]
+	progress_bar.max_value = timerAmax
+	progress_bar.min_value = 0
+	
 	foodspawn()
 
 func _process(delta: float) -> void:
 	if gameover :
 		return
 	movement()
+	
 	mov_timer += delta
+	
 	if mov_timer >=mov_interwel:
 		mov_timer=0.0
+	
 		step()
+	timerA += delta
+	progress_bar.value = timerA
+	if timerA>= timerAmax:
+		snakeshrink()
+		timerA = 0 
+	
 	
 	queue_redraw()
 	
@@ -100,3 +117,11 @@ func foodspawn() -> void:
 	food = pos
 	
 	
+	
+	
+func snakeshrink() -> void:
+	if snake.size() > 0:
+		snake.pop_back()
+	if snake.size()== 0:
+		gameover = true
+		
